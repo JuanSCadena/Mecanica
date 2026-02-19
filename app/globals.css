@@ -4,16 +4,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Font Configuration for Reckless */
-@font-face {
-  font-family: 'Reckless';
-  src: url('/fonts/Reckless.woff2') format('woff2'),
-    url('/fonts/Reckless.woff') format('woff');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* Font Configuration for Medio */
 @font-face {
   font-family: 'Medio';
@@ -34,12 +24,12 @@
 
 /* User requested class */
 .reckless-element {
-  font-family: 'Reckless', serif;
+  font-family: 'Medio', serif;
+  /* Fallback to Medio since Reckless is missing */
   font-size: 14em;
   line-height: 95%;
   letter-spacing: -0.002em;
   font-feature-settings: "calt" 1, "liga" 1;
-  font-variation-settings: "wght" 700, "CNTR" 50, "wdth" 100;
 }
 
 .medio-element {
@@ -145,7 +135,7 @@
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-reckless: 'Reckless', serif;
+  --font-reckless: 'Medio', serif;
   --font-oswald: var(--font-oswald), sans-serif;
   --font-playfair: var(--font-playfair), serif;
 
