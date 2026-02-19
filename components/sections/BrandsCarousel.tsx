@@ -49,14 +49,14 @@ export default function BrandsCarousel() {
     return (
         <section
             ref={sectionRef}
-            className="relative z-40 w-full overflow-hidden py-24 md:py-32 bg-[#f4f4f5]"
+            className="relative z-40 w-full overflow-hidden py-16 md:py-32 bg-[#f4f4f5]"
         >
             <div className="container mx-auto px-6 md:px-12 mb-20 md:mb-32">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     {/* Left: Title */}
                     <div className="flex flex-col">
                         <h2 className="text-[#18181b] leading-[0.85] uppercase">
-                            <span className="font-galgo text-7xl md:text-9xl block mb-2">
+                            <span className="font-galgo text-6xl md:text-9xl block mb-2">
                                 MARCAS QUE
                             </span>
                             {/* Combined Typography Effect - Using font-reckless which is aliased to Medio in globals */}
@@ -89,7 +89,7 @@ export default function BrandsCarousel() {
                     className="flex gap-16 md:gap-32 items-center whitespace-nowrap pl-16 md:pl-32"
                 >
                     {allBrands.map((src, i) => (
-                        <div key={i} className="relative w-[140px] h-[70px] md:w-[200px] md:h-[100px] shrink-0 grayscale hover:grayscale-0 transition-all duration-300">
+                        <div key={i} className="relative w-[100px] h-[50px] md:w-[200px] md:h-[100px] shrink-0 grayscale hover:grayscale-0 transition-all duration-300">
                             {/* Reverted to grayscale with color on hover for elegance */}
                             <Image
                                 src={src}

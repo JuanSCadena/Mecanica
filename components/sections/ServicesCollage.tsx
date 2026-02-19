@@ -14,35 +14,35 @@ const services = [
         id: "01",
         img: "/images/servv.jpeg",
         desc: "Escaneo preciso para detectar fallas electrónicas.",
-        layout: "w-[35vw] h-[60vh] self-start mt-10", // Grande Vertical
+        layout: "w-[85vw] md:w-[35vw] h-[50vh] md:h-[60vh] self-start mt-0 md:mt-10 mb-16 md:mb-0",
     },
     {
         title: "REPARACIÓN DE MOTORES",
         id: "02",
         img: "/images/serv2.jpeg",
         desc: "Mantenimiento preventivo.",
-        layout: "w-[20vw] h-[20vw] self-center mt-32", // Pequeño Cuadrado
+        layout: "w-[70vw] md:w-[20vw] h-[45vh] md:h-[20vw] self-end md:self-center mt-0 md:mt-32 mb-16 md:mb-0",
     },
     {
         title: "SUSPENSIÓN Y FRENOS",
         id: "03",
         img: "/images/servicio3.jpeg",
         desc: "Seguridad total en cada curva.",
-        layout: "w-[28vw] h-[40vh] self-end mb-20", // Mediano Vertical
+        layout: "w-[90vw] md:w-[28vw] h-[55vh] md:h-[40vh] self-center md:self-end mb-16 md:mb-20",
     },
     {
         title: "CAMBIO DE ACEITE",
         id: "04",
         img: "/images/servicio4.jpeg",
         desc: "Lubricantes de alta gama.",
-        layout: "w-[25vw] h-[25vw] self-start mt-20", // Cuadrado Medio
+        layout: "w-[75vw] md:w-[25vw] h-[45vh] md:h-[25vw] self-start mt-0 md:mt-20 mb-16 md:mb-0",
     },
     {
         title: "SISTEMA ELÉCTRICO",
         id: "05",
         img: "/images/servicio5.jpeg",
         desc: "Solución de arranque y luces.",
-        layout: "w-[40vw] h-[50vh] self-center", // Grande Horizontalish
+        layout: "w-[85vw] md:w-[40vw] h-[50vh] md:h-[50vh] self-end md:self-center mb-16 md:mb-0",
     },
     {
         title: "ALINEACIÓN Y BALANCEO",
@@ -50,7 +50,7 @@ const services = [
         id: "06",
         img: "/images/servicio6.jpeg",
         desc: "Mayor estabilidad.",
-        layout: "w-[22vw] h-[35vh] self-end mb-10", // Vertical Estrecho
+        layout: "w-[70vw] md:w-[22vw] h-[40vh] md:h-[35vh] self-center md:self-end mb-16 md:mb-10",
     },
     {
         title: "AIRE ACONDICIONADO",
@@ -58,7 +58,7 @@ const services = [
         color: "#000000ff",
         img: "/images/servicio7.jpeg",
         desc: "Confort climático.",
-        layout: "w-[30vw] h-[30vw] self-start mt-32", // Cuadrado Grande
+        layout: "w-[90vw] md:w-[30vw] h-[55vh] md:h-[30vw] self-start mt-0 md:mt-32 mb-16 md:mb-0",
     },
     {
         title: "ENDEREZADA Y PINTURA",
@@ -66,7 +66,7 @@ const services = [
         img: "/images/servicio8.jpeg",
         color: "#000000ff",
         desc: "Acabados de fábrica.",
-        layout: "w-[35vw] h-[45vh] self-center mb-10", // Mediano
+        layout: "w-[80vw] md:w-[35vw] h-[50vh] md:h-[45vh] self-end md:self-center mb-16 md:mb-10",
     },
     {
         title: "MECÁNICA GENERAL",
@@ -74,7 +74,7 @@ const services = [
         img: "/images/servicio9.jpeg",
         color: "#000000ff",
         desc: "Soluciones integrales.",
-        layout: "w-[30vw] h-[40vh] self-start mt-20", // Vertical
+        layout: "w-[75vw] md:w-[30vw] h-[45vh] md:h-[40vh] self-center md:self-start mt-0 md:mt-20 mb-16 md:mb-0",
     },
     {
         title: "REPUESTOS ORIGINALES",
@@ -82,7 +82,7 @@ const services = [
         img: "/images/servicio10.jpeg",
         color: "#000000ff",
         desc: "Garantía asegurada.",
-        layout: "w-[35vw] h-[35vw] self-end mb-10", // Cuadrado Grande
+        layout: "w-[85vw] md:w-[35vw] h-[50vh] md:h-[35vw] self-start md:self-end mb-0 md:mb-10",
     },
 ];
 
@@ -103,57 +103,59 @@ export default function ServicesCollage() {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     pin: true,
-                    scrub: 1, // Un poco más de suavidad (antes era 0.something o 1)
+                    scrub: 1,
                     start: "top top",
-                    // 🚀 CAMBIO CLAVE 1: De 4000 a 12000 o 15000. 
-                    // Entre más alto este número, MÁS LENTO se moverá el scroll horizontal.
-                    end: "+=5000",
+                    end: "+=12000", // Increased scroll distance
                     invalidateOnRefresh: true,
                 },
             });
 
             // 1. Horizontal Scroll (Track)
-            // 🚀 CAMBIO CLAVE 2: Aumentamos la duración relativa.
-            // Antes 25, ahora 100. Esto le dice a GSAP: "Dedica la mayor parte del scroll a mover las fotos".
             tl.to(trackRef.current, {
                 xPercent: -100,
                 x: () => window.innerWidth,
                 ease: "none",
-                duration: 100,
+                duration: 150,
             });
 
-            // 2. Background Transition (Dark -> Light)
+            // 2. Background Transition (Dark -> Light) & Text Color
             tl.to(
                 ".light-bg-layer",
                 {
                     opacity: 1,
                     ease: "power1.inOut",
-                    duration: 50, // Ajustado proporcionalmente
+                    duration: 50,
                 },
-                "10" // Empieza un poco después
+                "40"
             );
 
-            // 3. Duality Animation (Pinza) - Entra al final
-            // Mantenemos una duración corta (5) comparada con el scroll (100) para que sea un cierre rápido.
+            // Text to Dark for visibility on Light BG
+            tl.to(".service-text-title", { color: "#18181b", duration: 50 }, "40");
+            tl.to(".service-text-desc", { color: "#52525b", duration: 50 }, "40");
+
+            // Fade out track to prevent overlap with Duality - Delayed to 95 to show all services
+            tl.to(trackRef.current, { opacity: 0, duration: 15 }, "155");
+
+            // 3. Duality Animation (Pinza) - Delayed to 105 (after track fade)
             tl.fromTo(
                 leftCarRef.current,
                 { x: "-100%", opacity: 0 },
-                { x: "0%", opacity: 1, ease: "power2.out", duration: 50 },
-                "100"
+                { x: "0%", opacity: 1, ease: "power2.out", duration: 60 },
+                "150"
             );
 
             tl.fromTo(
                 rightCarRef.current,
                 { x: "100%", opacity: 0 },
-                { x: "0%", opacity: 1, ease: "power2.out", duration: 50 },
+                { x: "0%", opacity: 1, ease: "power2.out", duration: 60 },
                 "<"
             );
 
             tl.fromTo(
                 dualityTextRef.current,
                 { opacity: 0, scale: 0.8, y: 50 },
-                { opacity: 1, scale: 1, y: 0, ease: "back.out(1.7)", duration: 5 },
-                "<2"
+                { opacity: 1, scale: 1, y: 0, ease: "back.out(1.7)", duration: 40 },
+                "<10"
             );
 
         }, sectionRef);
@@ -189,17 +191,17 @@ export default function ServicesCollage() {
                 style={{
                     backgroundColor: "#f4f4f5", // Zinc-100 (Blanco hueso/gris muy claro)
                     // Mismo patrón que el dark, pero con fill negro/gris oscuro
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2318181b' fill-opacity='0.15' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2318181b' fill-opacity='0.15' fill-rule='evenodd'/%3E%3C/svg%3E")`,
                     backgroundSize: "60px 60px",
                     backgroundRepeat: "repeat",
                 }}
             />
 
             {/* Track Horizontal */}
-            <div ref={trackRef} className="flex h-full w-[500vw] items-center px-10 md:px-20 relative">
+            <div ref={trackRef} className="flex h-full w-[1100vw] md:w-[500vw] items-center px-10 md:px-20 relative">
 
                 {/* Intro Card */}
-                <div className="flex h-full w-[30vw] shrink-0 flex-col justify-center px-6 md:px-10 z-20">
+                <div className="flex h-full w-[85vw] md:w-[30vw] shrink-0 flex-col justify-center px-6 md:px-10 z-20 mr-12 md:mr-0">
                     <h2 className="font-oswald text-5xl font-bold uppercase text-white md:text-7xl lg:text-8xl leading-[0.85]">
                         NUESTROS <br />
                         <span className="text-[#FF5722]">SERVICIOS</span>
@@ -216,7 +218,7 @@ export default function ServicesCollage() {
                         className={`relative mx-6 md:mx-12 shrink-0 flex flex-col group ${service.layout}`}
                     >
                         {/* Imagen */}
-                        <div className="relative h-full w-full overflow-hidden grayscale transition-all duration-700 group-hover:grayscale-0">
+                        <div className="relative h-full w-full overflow-hidden grayscale transition-all duration-700 group-hover:grayscale-0 rounded-lg md:rounded-none">
                             <Image
                                 src={service.img}
                                 alt={service.title}
@@ -224,25 +226,25 @@ export default function ServicesCollage() {
                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                             {/* Borde sutil */}
-                            <div className="absolute inset-0 border border-white/20 transition-colors duration-500 group-hover:border-[#FF5722]/60" />
+                            <div className="absolute inset-0 border border-white/20 transition-colors duration-500 group-hover:border-[#FF5722]/60 rounded-lg md:rounded-none" />
                         </div>
 
                         {/* Info (Siempre visible, pegada a la imagen) */}
-                        <div className="mt-3 flex flex-col items-start">
+                        <div className="mt-3 flex flex-col items-start px-2 md:px-0">
                             <div className="flex items-center gap-2 mb-1">
                                 <span className="font-mono text-[10px] md:text-xs text-[#FF5722]">
                                     / {service.id}
                                 </span>
                                 <h3
-                                    className="font-oswald text-xl md:text-2xl font-bold uppercase leading-none transition-colors duration-300"
-                                    style={{ color: service.color || "#ffffff" }}
+                                    className="service-text-title font-oswald text-xl md:text-2xl font-bold uppercase leading-none transition-colors duration-300 text-white"
+                                    style={service.color ? { color: service.color } : {}}
                                 >
                                     {service.title}
                                 </h3>
                             </div>
                             <p
-                                className="font-manrope text-xs md:text-sm max-w-[90%] transition-colors duration-300"
-                                style={{ color: service.color || "#a1a1aa" }}
+                                className="service-text-desc font-manrope text-xs md:text-sm max-w-[90%] transition-colors duration-300 text-zinc-400"
+                                style={service.color ? { color: service.color } : {}}
                             >
                                 {service.desc}
                             </p>
