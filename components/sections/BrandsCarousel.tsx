@@ -8,19 +8,19 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 
 const brands = [
-    "/images/brands/boschh.png",
-    "/images/brands/manoll.png",
-    "/images/brands/mobil.png",
-    "/images/brands/ntn.png",
-    "/images/brands/valvoline.png",
-    "/images/brands/adcelcoo.png",
-    "/images/brands/dlb.png",
-    "/images/brands/kybb.png",
-    "/images/brands/kashimaa.png",
-    "/images/brands/valeo.png",
-    "/images/brands/ngkk.png",
-    "/images/brands/skf.jpg",
-    "/images/brands/havoline.png",
+    { src: "/images/brands/boschh.png", name: "Bosch" },
+    { src: "/images/brands/manoll.png", name: "Manol" },
+    { src: "/images/brands/mobil.png", name: "Mobil" },
+    { src: "/images/brands/ntn.png", name: "NTN" },
+    { src: "/images/brands/valvoline.png", name: "Valvoline" },
+    { src: "/images/brands/adcelcoo.png", name: "AC Delco" },
+    { src: "/images/brands/dlb.png", name: "DLB" },
+    { src: "/images/brands/kybb.png", name: "KYB" },
+    { src: "/images/brands/kashima.png", name: "Kashima" },
+    { src: "/images/brands/valeo.png", name: "Valeo" },
+    { src: "/images/brands/ngk.png", name: "NGK" },
+    { src: "/images/brands/skf.jpg", name: "SKF" },
+    { src: "/images/brands/havoline.png", name: "Havoline" },
 ];
 
 // Duplicate for seamless loop (4 sets for perfect -50% alignment)
@@ -56,11 +56,11 @@ export default function BrandsCarousel() {
                     {/* Left: Title */}
                     <div className="flex flex-col">
                         <h2 className="text-[#18181b] leading-[0.85] uppercase">
-                            <span className="font-galgo text-6xl md:text-9xl block mb-2">
-                                MARCAS QUE
+                            <span className="font-galgo text-4xl sm:text-6xl md:text-9xl block mb-2">
+                                MARCAS QUE CUIDAN
                             </span>
                             {/* Combined Typography Effect - Using font-reckless which is aliased to Medio in globals */}
-                            <span className="block font-reckless text-6xl md:text-8xl italic text-[#FF5722]">
+                            <span className="block font-reckless text-4xl sm:text-6xl md:text-8xl italic text-[#FF5722]">
                                 & RESPALDAN
                             </span>
                         </h2>
@@ -88,13 +88,14 @@ export default function BrandsCarousel() {
                     ref={trackRef}
                     className="flex gap-16 md:gap-32 items-center whitespace-nowrap pl-16 md:pl-32"
                 >
-                    {allBrands.map((src, i) => (
+                    {allBrands.map((brand, i) => (
                         <div key={i} className="relative w-[100px] h-[50px] md:w-[200px] md:h-[100px] shrink-0 grayscale hover:grayscale-0 transition-all duration-300">
                             {/* Reverted to grayscale with color on hover for elegance */}
                             <Image
-                                src={src}
-                                alt="Brand Logo"
+                                src={brand.src}
+                                alt={`Logo de ${brand.name} — repuestos automotrices disponibles en Quito, Proveedora La Gasca`}
                                 fill
+                                sizes="(max-width: 768px) 100px, 200px"
                                 className="object-contain"
                             />
                         </div>

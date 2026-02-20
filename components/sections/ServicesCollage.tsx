@@ -13,6 +13,7 @@ const services = [
         title: "DIAGNÓSTICO COMPUTARIZADO",
         id: "01",
         img: "/images/servv.jpeg",
+        alt: "Diagnóstico computarizado y escáner automotriz en Quito — Proveedora La Gasca",
         desc: "Escaneo preciso para detectar fallas electrónicas.",
         layout: "w-[85vw] md:w-[35vw] h-[50vh] md:h-[60vh] self-start mt-0 md:mt-10 mb-16 md:mb-0",
     },
@@ -20,6 +21,7 @@ const services = [
         title: "REPARACIÓN DE MOTORES",
         id: "02",
         img: "/images/serv2.jpeg",
+        alt: "Reparación de motores a gasolina y diésel en Quito — taller mecánico Proveedora La Gasca",
         desc: "Mantenimiento preventivo.",
         layout: "w-[70vw] md:w-[20vw] h-[45vh] md:h-[20vw] self-end md:self-center mt-0 md:mt-32 mb-16 md:mb-0",
     },
@@ -27,6 +29,7 @@ const services = [
         title: "SUSPENSIÓN Y FRENOS",
         id: "03",
         img: "/images/servicio3.jpeg",
+        alt: "Reparación de frenos y suspensión automotriz en Quito — servicio profesional",
         desc: "Seguridad total en cada curva.",
         layout: "w-[90vw] md:w-[28vw] h-[55vh] md:h-[40vh] self-center md:self-end mb-16 md:mb-20",
     },
@@ -34,38 +37,43 @@ const services = [
         title: "CAMBIO DE ACEITE",
         id: "04",
         img: "/images/servicio4.jpeg",
+        alt: "Cambio de aceite y lubricantes Mobil, Valvoline en Quito — Proveedora La Gasca",
         desc: "Lubricantes de alta gama.",
         layout: "w-[75vw] md:w-[25vw] h-[45vh] md:h-[25vw] self-start mt-0 md:mt-20 mb-16 md:mb-0",
     },
     {
-        title: "SISTEMA ELÉCTRICO",
+        title: "BUJIAS Y CABLES",
         id: "05",
         img: "/images/servicio5.jpeg",
-        desc: "Solución de arranque y luces.",
+        alt: "Reparación de bujias y cables automotriz en Quito",
+        desc: "Solución de encendido.",
         layout: "w-[85vw] md:w-[40vw] h-[50vh] md:h-[50vh] self-end md:self-center mb-16 md:mb-0",
     },
     {
-        title: "ALINEACIÓN Y BALANCEO",
+        title: "CONTROL DE NEUMÁTICOS",
         color: "#000000ff",
         id: "06",
         img: "/images/servicio6.jpeg",
+        alt: "Alineación y control de llantas en Quito — Proveedora La Gasca",
         desc: "Mayor estabilidad.",
         layout: "w-[70vw] md:w-[22vw] h-[40vh] md:h-[35vh] self-center md:self-end mb-16 md:mb-10",
     },
     {
-        title: "AIRE ACONDICIONADO",
+        title: "CAMBIO DE KIT DE EMBRAGUE",
         id: "07",
         color: "#000000ff",
         img: "/images/servicio7.jpeg",
-        desc: "Confort climático.",
+        alt: "Mantenimiento y cambio de kit de embrague en Quito",
+        desc: "Transmisión suave.",
         layout: "w-[90vw] md:w-[30vw] h-[55vh] md:h-[30vw] self-start mt-0 md:mt-32 mb-16 md:mb-0",
     },
     {
-        title: "ENDEREZADA Y PINTURA",
+        title: "CAMBIOS DE BATERIA ",
         id: "08",
         img: "/images/servicio8.jpeg",
         color: "#000000ff",
-        desc: "Acabados de fábrica.",
+        alt: "Cambios de bateria automotriz en Quito",
+        desc: "Energía confiable.",
         layout: "w-[80vw] md:w-[35vw] h-[50vh] md:h-[45vh] self-end md:self-center mb-16 md:mb-10",
     },
     {
@@ -73,6 +81,7 @@ const services = [
         id: "09",
         img: "/images/servicio9.jpeg",
         color: "#000000ff",
+        alt: "Mecánica general y mantenimiento preventivo de autos en Quito, Ecuador",
         desc: "Soluciones integrales.",
         layout: "w-[75vw] md:w-[30vw] h-[45vh] md:h-[40vh] self-center md:self-start mt-0 md:mt-20 mb-16 md:mb-0",
     },
@@ -81,6 +90,7 @@ const services = [
         id: "10",
         img: "/images/servicio10.jpeg",
         color: "#000000ff",
+        alt: "Venta de repuestos originales Chevrolet, Kia, Toyota en Quito — Proveedora La Gasca",
         desc: "Garantía asegurada.",
         layout: "w-[85vw] md:w-[35vw] h-[50vh] md:h-[35vw] self-start md:self-end mb-0 md:mb-10",
     },
@@ -221,8 +231,9 @@ export default function ServicesCollage() {
                         <div className="relative h-full w-full overflow-hidden grayscale transition-all duration-700 group-hover:grayscale-0 rounded-lg md:rounded-none">
                             <Image
                                 src={service.img}
-                                alt={service.title}
+                                alt={service.alt}
                                 fill
+                                sizes="(max-width: 768px) 85vw, (max-width: 1200px) 30vw, 400px"
                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                             {/* Borde sutil */}
@@ -270,9 +281,17 @@ export default function ServicesCollage() {
                         </span>
                     </h2>
 
-                    <button className={`group relative overflow-hidden rounded-full bg-[#FF5722] px-10 py-4 ${GeistMono.className} text-xl font-bold uppercase tracking-wider text-white transition-all hover:bg-[#18181b] hover:text-white hover:shadow-lg`}>
+                    <a
+                        href="#contacto"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                        className={`group relative overflow-hidden rounded-full bg-[#FF5722] px-10 py-4 ${GeistMono.className} text-xl font-bold uppercase tracking-wider text-white transition-all hover:bg-[#18181b] hover:text-white hover:shadow-lg`}
+                        aria-label="Ir al formulario de cotización"
+                    >
                         <span className="relative z-10">COTIZAR AHORA</span>
-                    </button>
+                    </a>
                 </div>
 
                 {/* Left Car */}
@@ -282,9 +301,10 @@ export default function ServicesCollage() {
                 >
                     <Image
                         src="/images/car-left.png"
-                        alt="Mecánica"
+                        alt="Servicio de mecánica automotriz profesional en Quito — Proveedora La Gasca"
                         width={800}
                         height={600}
+                        sizes="(max-width: 768px) 45vw, 300px"
                         className="object-contain"
                         priority
                     />
@@ -297,9 +317,10 @@ export default function ServicesCollage() {
                 >
                     <Image
                         src="/images/car-right.png"
-                        alt="Ciudad"
+                        alt="Taller automotriz de confianza en Quito, Ecuador — reparación y repuestos"
                         width={800}
                         height={600}
+                        sizes="(max-width: 768px) 45vw, 300px"
                         className="object-contain"
                         priority
                     />

@@ -45,12 +45,11 @@ export default function HistoryAutoReveal() {
 
                     <div className="flex items-center gap-4">
                         <span className="h-px w-12 bg-[#FF5722]"></span>
-                        <span className="font-manrope text-xl font-bold text-[#FF5722]">2004 — 2024</span>
+                        <span className="font-manrope text-xl font-bold text-[#FF5722]">1989 — actualidad</span>
                     </div>
 
                     <p className="max-w-md font-manrope text-lg leading-relaxed text-zinc-400">
-                        De un pequeño local en La Gasca a un centro de ingeniería automotriz.
-                        Lo único que no ha cambiado en 20 años es nuestra obsesión por la calidad y el servicio.
+                        Más de 25 años de experiencia en el mercado automotriz, ofreciendo calidad y servicio a nuestros clientes.
                     </p>
                 </motion.div>
             </div>
@@ -62,8 +61,9 @@ export default function HistoryAutoReveal() {
                     <div className="absolute inset-0 z-0 flex items-center justify-center">
                         <Image
                             src="/images/Proveedoraantes.jpeg"
-                            alt="Proveedora La Gasca - Antes"
+                            alt="Proveedora La Gasca en sus inicios — taller mecánico histórico en el barrio La Gasca, Quito"
                             fill
+                            sizes="(max-width: 768px) 95vw, (max-width: 1200px) 50vw, 450px"
                             className="object-contain object-center grayscale filter contrast-125 sepia-[0.3]"
                             priority
                         />
@@ -78,8 +78,9 @@ export default function HistoryAutoReveal() {
                         <div className="relative h-full w-full">
                             <Image
                                 src="/images/ProveedoraDespues2.jpeg"
-                                alt="Proveedora La Gasca - Después"
+                                alt="Proveedora La Gasca actualmente — taller automotriz moderno y venta de repuestos en Quito, Ecuador"
                                 fill
+                                sizes="(max-width: 768px) 95vw, (max-width: 1200px) 50vw, 450px"
                                 className="object-contain object-center"
                                 priority
                             />
